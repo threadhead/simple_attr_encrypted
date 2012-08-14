@@ -11,11 +11,13 @@ Install
 
 ```shell
 gem install simple_attr_encrypted
+```
 
 or add the following to your Gemfile:
 
 ```ruby
 gem 'simple_attr_encrypted'
+```
 
 and run `bundle install` from the command line.
 
