@@ -1,9 +1,9 @@
 = simple_attr_encrypted
 
-Description goes here.
+Simple attribute encryption for ActiveRecord. Simple, as in has few features. Directly inspired by danpal's attr_encryptor
 
 == Contributing to simple_attr_encrypted
- 
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 * Fork the project.
