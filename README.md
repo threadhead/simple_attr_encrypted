@@ -26,6 +26,7 @@ Usage
 ```shell
 export ENCRYPTED_ATTRIBUTE_SALT=987654321
 export ENCRYPTED_ATTRIBUTE_KEY=mysekritkey
+```
 
 Obviously, you should change the salt to a random, large integer, and the key to a long string of characters (up to 256).
 
