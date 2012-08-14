@@ -35,11 +35,11 @@ Obviously, you should change the salt to a random, large integer, and the key to
 An initializtion vector will be store in the database along with your encrpyted string field.
 
 ```shell
-rails generate migration AddEncryptedAndIvToModel encrypted_item:string, encrypted_item_iv:string
+rails generate migration AddEncryptedAndIvToWidgets encrypted_item:string, encrypted_item_iv:string
 ```
 
 ```ruby
-class AddEncryptedAndIvToModel < ActiveRecord::Migration
+class AddEncryptedAndIvToWidgets < ActiveRecord::Migration
   def change
     add_column :widgets, :encrypted_item, :string
     add_column :widgets, :encrypted_item_iv, :string
@@ -57,26 +57,36 @@ rake db:migrate
 Now you need to add two lines to your model:
 
 ```ruby
-class User < ActiveRecord::Base
+class Widget < ActiveRecord::Base
   include ActiveRecord::SimpleAttrEncrypted
   encrypted_attribute 'item'
 end
 ```
 
-Note: `item` will be the attribute of the unencrypted string.
+Note: `item` will be the name of the unencrypted string. If encrypting more than one attribute, each `encrypted_attribute` call must be on a separate line.
 
 Now you can:
 
 ```ruby
-i = Item.create!  # => true
+i = Item.create!     # => true
 i.encrypted_item_iv  # => "LGZyLJO1rGGhfH6y+lXojg=="
-i.item   # => nil
-i.item = "sumptin"  # => "sumptin"
-i.encrypted_item  # => "9XxxrnTvfHLkAMVl4PBTJA==\n"
-i.save  # => true
-i.item  # => "sumptin"
+i.item               # => nil
+i.item = "sumptin"   # => "sumptin"
+i.encrypted_item     # => "9XxxrnTvfHLkAMVl4PBTJA==\n"
+i.save               # => true
+i.item               # => "sumptin"
 ```
 
+Suported Ruby Version
+---------------------
+
+MRI Ruby 1.9 only.
+
+
+Credits
+-------
+
+Deep inspiration goes to [danpal's](https://github.com/danpal) [attr_encryptor](https://github.com/danpal/attr_encryptor).
 
 
 Contributing
