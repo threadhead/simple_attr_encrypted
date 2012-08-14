@@ -2,8 +2,8 @@ rvm:
   - 1.9.2
   - 1.9.3
 env:
-  - ENCRYPTED_ATTRIBUTE_KEY=mysekritkey
-  - ENCRYPTED_ATTRIBUTE_SALT=987654321
+  - ENCRYPTED_ATTRIBUTE_KEY=mysekritkey ENCRYPTED_ATTRIBUTE_SALT=987654321
+  - ENCRYPTED_ATTRIBUTE_KEY=mysekritkey ENCRYPTED_ATTRIBUTE_SALT=987654321
 before_install:
   - gem update --system
 script: "bundle exec rake spec"
