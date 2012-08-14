@@ -33,6 +33,7 @@ An initializtion vector will be store in the database along with your encrpyted 
 
 ```shell
 rails generate migration AddEncryptedAndIvToModel encrypted_item:string, encrypted_item_iv:string
+```
 
 ```ruby
 class AddEncryptedAndIvToModel < ActiveRecord::Migration
@@ -42,11 +43,13 @@ class AddEncryptedAndIvToModel < ActiveRecord::Migration
   end
   # no need to index either of these columns
 end
+```
 
 and don't forget to migrate:
 
 ```shell
 rake db:migrate
+```
 
 Now you need to add two lines to your model:
 
@@ -55,6 +58,7 @@ class User < ActiveRecord::Base
   include ActiveRecord::SimpleAttrEncrypted
   encrypted_attribute 'item'
 end
+```
 
 Note: `item` will be the attribute of the unencrypted string.
 
@@ -68,7 +72,7 @@ i.item = "sumptin"  # => "sumptin"
 i.encrypted_item  # => "9XxxrnTvfHLkAMVl4PBTJA==\n"
 i.save  # => true
 i.item  # => "sumptin"
-
+```
 
 
 
